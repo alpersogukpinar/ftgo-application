@@ -9,7 +9,7 @@ spec:
   selector:
     svc: ftgo-consumer-service
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: ftgo-consumer-service
@@ -17,6 +17,10 @@ metadata:
     application: ftgo
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      svc: ftgo-consumer-service
+      application: ftgo
   strategy:
     rollingUpdate:
       maxUnavailable: 0
